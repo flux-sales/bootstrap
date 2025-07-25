@@ -1,3 +1,18 @@
+// MOCK PII UTILITY
+$utilities: (
+  pii: (
+    property: "content",
+    class: "pii",
+    values: (
+      name: "'John Doe'",
+      email: "'john.doe@example.com'",
+      phone: "'+1-555-1234'",
+      ssn: "'123-45-6789'",
+      address: "'123 Main St, Springfield, IL'"
+    )
+  )
+);
+
 // Utility generator
 // Used to generate utilities & print utilities
 @mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
@@ -95,3 +110,6 @@
     }
   }
 }
+
+// Include PII utility classes
+@include generate-utility(map-get($utilities, pii));
